@@ -1,108 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FM Radio India</title>
-  <style>
-    body {
-      background: linear-gradient(to bottom, #ff9933, #ffffff, #138808);
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #0d0d0d;
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    .radio-button {
-      display: inline-block;
-      background-color: #ffffff;
-      color: #333333;
-      border: 2px solid #138808;
-      padding: 15px 25px;
-      margin: 10px;
-      font-size: 1.2em;
-      font-weight: bold;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .radio-button:hover {
-      background-color: #138808;
-      color: white;
-    }
-    audio {
-      margin-top: 30px;
-      width: 100%;
-      max-width: 600px;
-    }
-    .spinner {
-      display: none;
-      margin-top: 20px;
-    }
-    .spinner div {
-      width: 40px;
-      height: 40px;
-      border: 5px solid #ffffff;
-      border-top: 5px solid #138808;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FM Radio India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f0f8ff;
+            padding: 30px;
+        }
+        h1 {
+            color: #d6336c;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        audio {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
 </head>
 <body>
+    <h1>♪ FM Radio India ♪</h1>
+    <p>Click a station to start listening!</p>
 
-  <h1>FM Radio India</h1>
+    <button class="button" onclick="playStation('https://node-31.zeno.fm/7fe0b08wbrruv?rj-ttl=5&rj-tok=AAABhTnOel0A-4kgQw4-dw7fzw')">Radio City Hindi</button><br>
 
-  <div>
-    <button class="radio-button" onclick="playRadio('https://stream-158.zeno.fm/1yt8dhn8erhvv?zs=6CwUtAG-RI-1zRxPlvyz3Q')">Radio Mirchi</button>
-    <button class="radio-button" onclick="playRadio('https://stream-157.zeno.fm/v1ggk9bxerhvv?zs=jjeIgpdpQ6avw74ltKArOw')">Bollywood Hits</button>
-    <button class="radio-button" onclick="playRadio('https://stream-159.zeno.fm/rcjtdtm7erhvv?zs=okgsUS19RuKn-S9IkzxgCw')">Bhajan Radio</button>
-    <button class="radio-button" onclick="playRadio('https://stream-154.zeno.fm/8w3q7m1zxxhvv?zs=aLS-L7F0TceNSu9z97Xbzw')">Desi FM</button>
-    <button class="radio-button" onclick="playRadio('https://stream-154.zeno.fm/9waz1f53dxhvv?zs=FBpb6SfqTxyhpEx9otDoyA')">Retro Bollywood</button>
-  </div>
+    <button class="button" onclick="playStation('https://prclive4.listenon.in:2010/;')">Big FM 92.7</button><br>
 
-  <div class="spinner" id="spinner">
-    <div></div>
-  </div>
+    <button class="button" onclick="playStation('https://stream-152.zeno.fm/s5m9y6rmn2zuv?rj-ttl=5&rj-tok=AAABhTnPo7QA9SrJvD7xL5yngA')">Mirchi 90's</button><br>
 
-  <audio id="audioPlayer" controls>
-    Your browser does not support the audio element.
-  </audio>
+    <button class="button" onclick="playStation('https://stream-153.zeno.fm/vum6rx6rphruv?rj-ttl=5&rj-tok=AAABhTnP0DwA2uhTQxKyj9xycQ')">Retro Bollywood</button><br>
 
-  <footer>
-    Made with love for India | FM Radio India | Enjoy Music Anywhere!
-  </footer>
+    <button class="button" onclick="playStation('https://node-26.zeno.fm/x80dce9wvchvv?rj-ttl=5&rj-tok=AAABhTnQFNEA1hEuI7P-1oFqFA')">Desi FM</button><br>
 
-  <script>
-    function playRadio(url) {
-      var spinner = document.getElementById('spinner');
-      var player = document.getElementById('audioPlayer');
+    <audio id="radioPlayer" controls autoplay></audio>
 
-      spinner.style.display = 'block';
-      player.style.display = 'none';
-      player.src = url;
-      player.load();
-
-      player.oncanplay = function() {
-        spinner.style.display = 'none';
-        player.style.display = 'block';
-        player.play();
-      };
-    }
-  </script>
-
+    <script>
+        function playStation(streamUrl) {
+            var player = document.getElementById('radioPlayer');
+            player.src = streamUrl;
+            player.play();
+        }
+    </script>
 </body>
 </html>
