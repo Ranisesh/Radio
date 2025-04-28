@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FM Radio India</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #002f4b, #dc4225);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .dial {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+      background: #333;
+      border-radius: 50px;
+      padding: 20px;
+      box-shadow: inset 0 0 10px #111;
+    }
+
+    .station {
+      display: inline-block;
+      background: #666;
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1em;
+    }
+
+    .station:hover {
+      background: #ff9800;
+      transform: scale(1.05);
+    }
+
+    audio {
+      margin-top: 30px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>FM Radio India</h1>
+
+  <div class="dial">
+    <div class="station" onclick="tune('https://prclive1.listenon.in/947fm')">94.7 FM Bollywood</div>
+    <div class="station" onclick="tune('https://prclive4.listenon.in/hungama')">Hungama Bollywood</div>
+    <div class="station" onclick="tune('https://prclive1.listenon.in/radio-mirchi')">Radio Mirchi</div>
+    <div class="station" onclick="tune('https://prclive4.listenon.in/bhajan')">Bhajan Radio</div>
+    <div class="station" onclick="tune('https://prclive1.listenon.in/tamil')">Tamil FM</div>
+  </div>
+
+  <audio id="player" controls></audio>
+
+  <footer>
+    Made for India with Love
+  </footer>
+
+  <script>
+    function tune(url) {
+      const player = document.getElementById('player');
+      player.src = url;
+      player.play();
+    }
+  </script>
+
+</body>
+</html>
